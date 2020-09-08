@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import VueJwtDecode from 'vue-jwt-decode'
 import axios from 'axios'
 import Router from 'vue-router'
 import Auth from './auth'
@@ -7,12 +6,11 @@ import Login from '../pages/Login'
 import Home from '../pages/Home'
 
 Vue.use(Router)
-Vue.use(VueJwtDecode)
 
 Vue.prototype.$appName = 'OhCoach Analytics'
 Vue.prototype.$http = axios
 Vue.prototype.$apiUrl = 'https://admin-api-dev.ohcoach.com'
-Vue.prototype.$auth = new Auth(Vue.jwtDec)
+Vue.prototype.$auth = new Auth()
 
 const routes = [
   {

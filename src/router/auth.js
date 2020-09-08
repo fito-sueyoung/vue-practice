@@ -1,6 +1,6 @@
 class Auth {
-  constructor (jwtDec) {
-    this.jwtDec = jwtDec
+  constructor () {
+    this.jwtDecode = require('jwt-decode')
   }
 
   setToken (token) {
@@ -17,7 +17,7 @@ class Auth {
   }
 
   getPayload () {
-    return this.hasToken() ? this.jwtDec.decode(this.getToken()) : null
+    return this.hasToken() ? this.jwtDecode(this.getToken()) : null
   }
 
   revoke () {

@@ -9,7 +9,7 @@
 npm install
 npm install vue
 npm install --save axios vue-axios
-npm install vue-jwt-decode
+npm install jwt-decode
 
 # serve with hot reload at localhost:8080
 npm run dev
