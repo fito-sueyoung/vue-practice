@@ -1,5 +1,5 @@
 <template>
-  <div class="bg">
+  <div class="bg wrapper--center">
     <div id="login" class="login">
       <img src="../assets/logo.png">
       <div name="div_email" class="login__row">
@@ -27,8 +27,8 @@ export default {
   name: 'Login',
   data () {
     return {
-      email: '',
-      password: '',
+      email: 'sunghoon.cho@fitogether.com',
+      password: 'whtjdgns00!!',
       accountInfo: null,
       loading: true,
       msg_email_invalid: ''
@@ -61,22 +61,17 @@ export default {
           alert('[Login Failed] ' + error)
         })
     }
-  },
-  jwtData () {
-    return JSON.parse(atob(this.jwt))
   }
 }
 
 </script>
 
 <style scoped>
-  .bg {
-    text-align: center;
-  }
   .login {
     width: 500px;
     height: 500px;
     display: inline-block;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
   }
   .login__row {
     height: 50px;
