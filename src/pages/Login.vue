@@ -21,9 +21,6 @@
 </template>
 
 <script>
-const axios = require('axios')
-
-const DEV_API_URL = 'https://admin-api-dev.ohcoach.com'
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export default {
@@ -32,7 +29,7 @@ export default {
     return {
       email: '',
       password: '',
-      auth: '',
+      accountInfo: null,
       loading: true,
       msg_email_invalid: ''
     }
@@ -47,22 +44,26 @@ export default {
         this.msg_email_invalid = ''
       }
     },
-    login: function (event) {
-      axios
-        .post(DEV_API_URL + '/auth/signin',
+    login () {
+      this.$http
+        .post(this.$apiUrl + '/auth/signin',
           {
-            'email': this.email,
-            'password': this.password
+            email: this.email,
+            password: this.password
           })
         .then(response => {
-          console.log(response)
-          this.auth = response.data.Authorization
+          let token = response.data.Authorization
+          this.$auth.setToken(token)
           alert('Welcome!')
+          this.$router.replace({name: 'Home'})
         })
         .catch(error => {
           alert('[Login Failed] ' + error)
         })
     }
+  },
+  jwtData () {
+    return JSON.parse(atob(this.jwt))
   }
 }
 
