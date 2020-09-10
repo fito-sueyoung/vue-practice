@@ -1,0 +1,54 @@
+@charset "utf-8";
+
+@import "base.css";
+@import "button.css";
+@import "image.css";
+
+:root {
+  --primary-color: #31C29C;
+  --primary-bg-color: white;
+  --primary-txt-color: black;
+  --main-box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.form {
+  padding: 20px;
+}
+
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.fit-width {
+  width: 100%;
+}
+
+.fit-height {
+  height: 100%;
+}
+
+.wrapper--center {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.theme-black {
+  background-color: black;
+  color: white;
+}
+
+.theme-white {
+  background-color: white;
+  color: black;
+}

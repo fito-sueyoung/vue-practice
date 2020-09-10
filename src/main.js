@@ -5,7 +5,6 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import App from './App'
-import Main from './components/view/Main'
 
 Vue.config.productionTip = false
 
@@ -14,12 +13,6 @@ Vue.prototype.$http = axios
 Vue.prototype.$apiUrl = 'https://admin-api-dev.ohcoach.com'
 Vue.prototype.$localStorage = localStorage
 
-Vue.use(router)
-Vue.use(store)
-
-Vue.component('main-view', Main)
-
-// eslint-disable-next-line no-new
 new Vue({
   router,
   store,
