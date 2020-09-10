@@ -1,45 +1,43 @@
 import Vue from 'vue'
-import axios from 'axios'
 import Router from 'vue-router'
-import Auth from './auth'
 import Login from '../pages/Login'
 import Home from '../pages/Home'
 
 Vue.use(Router)
 
-Vue.prototype.$appName = 'OhCoach Analytics'
-Vue.prototype.$http = axios
-Vue.prototype.$apiUrl = 'https://admin-api-dev.ohcoach.com'
-Vue.prototype.$auth = new Auth()
-
 const routes = [
+  {
+    path: '/',
+    redirect: '/home'
+  },
   {
     path: '/login',
     name: 'Login',
     component: Login
   },
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
     component: Home
   }
 ]
 
-export default new Router({
-  routes: routes,
-  mounted () {
-    if (this.$auth.hasToken()) {
-      this.goHomePage()
-    } else {
-      this.goLoginPage()
-    }
-  },
-  methods: {
-    goLoginPage () {
-      this.$router.replace({name: 'Login'}).catch(() => {})
-    },
-    goHomePage () {
-      this.$router.replace({name: 'Home'}).catch(() => {})
-    }
+const router = new Router({
+  routes: routes
+})
+
+/*
+  Navigation Guards
+  https://router.vuejs.org/guide/advanced/navigation-guards.html
+ */
+router.beforeEach((to, from, next) => {
+  if (to.name !== 'Login' && !localStorage.auth_token) {
+    next({ name: 'Login' })
+  } else if (to.name === 'Login' && localStorage.auth_token) {
+    next(false)
+  } else {
+    next()
   }
 })
+
+export default router

@@ -8,7 +8,9 @@
         main
       </div>
       <div class="top-nav__right-area wrapper--center">
-        <button class="btn--medium" v-on:click="goAccountView()">{{this.$auth.getPayload().name}}</button>
+        <button class="btn--medium" v-on:click="goAccountView()">
+          {{ user.name }}
+        </button>
         <button class="btn--medium" v-on:click="logout">Log Out</button>
       </div>
     </div>
@@ -23,24 +25,24 @@
 </template>
 
 <script>
+
 export default {
   name: 'Home',
-  mounted () {
-    if (!this.$auth.hasToken()) {
-      this.$router.replace({name: 'Login'})
+  data () {
+    return {
+      user: this.$store.getters['auth/getPayload']
     }
-    console.log(this.$auth.getPayload())
   },
   methods: {
     logout () {
       let result = confirm('Really????')
       if (result) {
-        this.$auth.revoke()
+        this.$store.dispatch('auth/revoke')
         this.$router.replace({name: 'Login'})
       }
     },
     goMainView () {
-      this.$router.push({name: 'Home'})
+      this.$router.push({name: 'Home'}, () => {})
     },
     goAccountView () {
       alert('Account View')

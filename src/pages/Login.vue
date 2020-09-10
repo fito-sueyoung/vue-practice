@@ -34,6 +34,11 @@ export default {
       msg_email_invalid: ''
     }
   },
+  mounted () {
+    if (this.$store.getters['auth/isAuthenticated']) {
+      this.$router.go(-1)
+    }
+  },
   methods: {
     validateEmail () {
       let email = this.email
@@ -44,6 +49,14 @@ export default {
         this.msg_email_invalid = ''
       }
     },
+    onLoginSuccess (token) {
+      this.$store.dispatch('auth/authenticate', token)
+      this.$router.replace({name: 'Home'})
+      alert('Welcome!')
+    },
+    onLoginFailed (error) {
+      alert('[Login Failed] ' + error)
+    },
     login () {
       this.$http
         .post(this.$apiUrl + '/auth/signin',
@@ -53,12 +66,10 @@ export default {
           })
         .then(response => {
           let token = response.data.Authorization
-          this.$auth.setToken(token)
-          alert('Welcome!')
-          this.$router.replace({name: 'Home'})
+          this.onLoginSuccess(token)
         })
         .catch(error => {
-          alert('[Login Failed] ' + error)
+          this.onLoginFailed(error)
         })
     }
   }

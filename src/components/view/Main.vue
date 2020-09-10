@@ -1,12 +1,17 @@
 <template>
   <div id="main-view">
-    {{ this.$auth.getPayload() }}
+    {{ user }}
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Main'
+  name: 'Main',
+  data () {
+    return {
+      user: this.$store.getters['auth/getPayload']
+    }
+  }
 }
 </script>
 

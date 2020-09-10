@@ -1,3 +1,5 @@
+<script src="store/index.js"></script>
+<script src="main.js"></script>
 <template>
   <div id="app">
     <router-view/>
@@ -5,6 +7,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'App'
 }

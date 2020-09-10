@@ -7,9 +7,7 @@
 ``` bash
 # install dependencies
 npm install
-npm install vue
-npm install --save axios vue-axios
-npm install jwt-decode
+npm install --save vue axios vue-axios jwt-decode vuex vuex-persistedstate
 
 # serve with hot reload at localhost:8080
 npm run dev
