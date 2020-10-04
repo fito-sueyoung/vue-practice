@@ -1,15 +1,15 @@
 {
   "name": "vue-practice",
   "version": "1.0.0",
+  "private": true,
   "description": "practice",
   "author": "Sueyoung Oh <sueyoung.oh@fitogether.com>",
-  "private": true,
   "scripts": {
+    "build": "node build/build.js",
+    "lint": "eslint --ext .js,.vue src test/unit",
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "test": "npm run unit",
-    "lint": "eslint --ext .js,.vue src test/unit",
-    "build": "node build/build.js"
+    "test": "npm run unit"
   },
   "dependencies": {
     "axios": "^0.20.0",
@@ -17,6 +17,7 @@
     "vue": "^2.6.12",
     "vue-axios": "^2.1.5",
     "vue-router": "^3.0.1",
+    "vuetify": "^2.2.11",
     "vuex": "^3.5.1",
     "vuex-persistedstate": "^3.1.0"
   },
@@ -59,6 +60,7 @@
     "shelljs": "^0.7.6",
     "uglifyjs-webpack-plugin": "^1.1.1",
     "url-loader": "^0.5.8",
+    "vue-cli-plugin-vuetify": "~2.0.7",
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.5.2",
@@ -67,13 +69,13 @@
     "webpack-dev-server": "^2.9.1",
     "webpack-merge": "^4.1.0"
   },
-  "engines": {
-    "node": ">= 6.0.0",
-    "npm": ">= 3.0.0"
-  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
+  }
 }
