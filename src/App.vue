@@ -1,7 +1,7 @@
 <script src="store/index.js"></script>
 <script src="main.js"></script>
 <template>
-  <div id="app">
+  <div id="app" data-app>
     <router-view/>
   </div>
 </template>
