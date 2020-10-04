@@ -8,7 +8,7 @@
     </div>
     <div class="top-nav__right-area wrapper--center">
       <button class="btn--medium" v-on:click="goAccountView()">
-        {{ user.name }}
+        {{ payload.name }}
       </button>
       <button class="btn btn--medium" v-on:click="logout">Log Out</button>
     </div>
@@ -16,11 +16,16 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'Top',
-  data () {
-    return {
-      user: this.$store.getters['auth/getPayload']
+  computed: {
+    ...mapGetters([
+      'getPayload'
+    ]),
+    payload () {
+      return this.$store.getters['auth/getPayload']
     }
   },
   methods: {

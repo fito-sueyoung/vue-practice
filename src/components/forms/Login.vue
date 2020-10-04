@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export default {
@@ -39,8 +41,11 @@ export default {
       msg_email_invalid: ''
     }
   },
+  ...mapGetters([
+    'isAuthenticated'
+  ]),
   mounted () {
-    if (this.$store.getters['auth/isAuthenticated']) {
+    if (this.$store.getters.isAuthenticated) {
       this.$router.go(-1)
     }
   },

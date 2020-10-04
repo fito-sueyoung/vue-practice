@@ -1,15 +1,21 @@
 <template>
   <div id="main-view">
-    {{ user }}
+    {{ payload }}
   </div>
 </template>
 
 <script>
+
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'Main',
-  data () {
-    return {
-      user: this.$store.getters['auth/getPayload']
+  computed: {
+    ...mapGetters([
+      'getPayload'
+    ]),
+    payload () {
+      return this.$store.getters['auth/getPayload']
     }
   }
 }
