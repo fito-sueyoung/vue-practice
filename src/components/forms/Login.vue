@@ -1,7 +1,7 @@
 <template>
   <div id="login" class="form form--login">
     <div>
-      <img class="logo logo--large" src="../../assets/logo.png">
+      <img class="logo logo--large" src="../../assets/images/logo.png">
     </div>
     <div>
       <div name="div_email" class="login__row">

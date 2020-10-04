@@ -13,7 +13,7 @@
 <script>
 import Top from '../components/public/Top'
 import Left from '../components/public/Left'
-import Main from '../components/view/Main'
+import Main from './Main'
 
 export default {
   name: 'Home',

@@ -43,7 +43,7 @@ export default {
 
 <style scoped>
 
-@import "../../styles/style.css";
+@import "../../assets/styles/style.css";
 .top-nav {
   top: 0;
   left: 0;
