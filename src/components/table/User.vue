@@ -30,10 +30,10 @@
             정보 수정
           </v-card-title>
           <v-card-text>
-            <v-select :items="userTypes" label="Type*"></v-select>
-            <v-text-field label="이름*"></v-text-field>
-            <v-text-field label="휴대폰 번호*"></v-text-field>
-            <v-text-field label="Email*"></v-text-field>
+            <v-select :items="userTypes" label="Type*" v-model="selectedItem.type"></v-select>
+            <v-text-field label="이름*" v-model="selectedItem.name"></v-text-field>
+            <v-text-field label="휴대폰 번호*" v-model="selectedItem.phone"></v-text-field>
+            <v-text-field label="Email*" v-model="selectedItem.email"></v-text-field>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
